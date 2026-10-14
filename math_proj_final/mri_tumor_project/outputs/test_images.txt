@@ -1,0 +1,51 @@
+0	tumor_project\dataset\no\29 no.jpg
+1	tumor_project\dataset\yes\Y157.JPG
+0	tumor_project\dataset\no\3 no.jpg
+1	tumor_project\dataset\yes\Y252.jpg
+0	tumor_project\dataset\no\N16.jpg
+1	tumor_project\dataset\yes\Y76.jpg
+1	tumor_project\dataset\yes\Y159.JPG
+0	tumor_project\dataset\no\31 no.jpg
+1	tumor_project\dataset\yes\Y61.jpg
+0	tumor_project\dataset\no\44no.jpg
+0	tumor_project\dataset\no\23 no.jpg
+1	tumor_project\dataset\yes\Y27.jpg
+0	tumor_project\dataset\no\11 no.jpg
+1	tumor_project\dataset\yes\Y170.JPG
+0	tumor_project\dataset\no\No14.jpg
+1	tumor_project\dataset\yes\Y75.JPG
+0	tumor_project\dataset\no\no 7.jpeg
+1	tumor_project\dataset\yes\Y95.jpg
+1	tumor_project\dataset\yes\Y160.JPG
+1	tumor_project\dataset\yes\Y244.JPG
+1	tumor_project\dataset\yes\Y1.jpg
+0	tumor_project\dataset\no\No11.jpg
+1	tumor_project\dataset\yes\Y35.jpg
+1	tumor_project\dataset\yes\Y249.JPG
+0	tumor_project\dataset\no\no 1.jpg
+1	tumor_project\dataset\yes\Y60.jpg
+0	tumor_project\dataset\no\No17.jpg
+1	tumor_project\dataset\yes\Y97.JPG
+1	tumor_project\dataset\yes\Y37.jpg
+0	tumor_project\dataset\no\N15.jpg
+0	tumor_project\dataset\no\No16.jpg
+0	tumor_project\dataset\no\37 no.jpg
+1	tumor_project\dataset\yes\Y15.jpg
+0	tumor_project\dataset\no\No12.jpg
+1	tumor_project\dataset\yes\Y181.jpg
+1	tumor_project\dataset\yes\Y164.JPG
+1	tumor_project\dataset\yes\Y70.jpg
+1	tumor_project\dataset\yes\Y4.jpg
+1	tumor_project\dataset\yes\Y194.jpg
+1	tumor_project\dataset\yes\Y32.jpg
+1	tumor_project\dataset\yes\Y109.JPG
+1	tumor_project\dataset\yes\Y165.JPG
+0	tumor_project\dataset\no\N3.jpg
+0	tumor_project\dataset\no\no 9.png
+1	tumor_project\dataset\yes\Y102.jpg
+1	tumor_project\dataset\yes\Y39.jpg
+0	tumor_project\dataset\no\10 no.jpg
+1	tumor_project\dataset\yes\Y112.JPG
+0	tumor_project\dataset\no\no 97.jpg
+1	tumor_project\dataset\yes\Y148.JPG
+1	tumor_project\dataset\yes\Y195.JPG

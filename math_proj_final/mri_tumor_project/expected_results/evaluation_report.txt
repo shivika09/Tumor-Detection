@@ -1,0 +1,49 @@
+Data: train (202, 4096), test (51, 4096)  (each image = 64x64 = 4096 numbers)
+Tumor images: 124 of 202 in train, 31 of 51 in test
+PCA: 4096 features -> k = 109 components
+SVM chosen by grid search: {'kernel': 'rbf', 'C': 10, 'gamma': 'scale'}
+
+Test-set evaluation (the number that matters)
+=============================================
+Images evaluated : 51
+
+Confusion matrix (rows = true class, columns = predicted class)
+                      predicted no tumor  predicted tumor
+  true no tumor           15 (TN)               5 (FP)
+  true tumor               3 (FN)              28 (TP)
+
+Accuracy    : 0.8431   (43 of 51 images correct)
+Precision   : 0.8485   (when we say 'tumor', we are right this often)
+Recall      : 0.9032   (share of real tumors we actually found)
+F1-score    : 0.8750   (balance of precision and recall)
+Specificity : 0.7500   (share of healthy scans we correctly cleared)  [extra]
+
+How to read it
+  TP = 28: tumor images correctly flagged as tumor.
+  TN = 15: healthy images correctly cleared.
+  FP = 5: healthy images wrongly flagged as tumor (a false alarm - causes extra tests/worry).
+  FN = 3: tumor images the model MISSED (the most dangerous mistake in a medical setting).
+  -> The model raises more false alarms than it makes misses, which is the safer direction for screening, but precision suffers.
+  Note: with only 51 test images, one image changes accuracy by about 2.0 percentage points, so treat the numbers as rough.
+
+For comparison, accuracy on the TRAIN set = 1.0000 (test = 0.8431).
+  -> Train accuracy is much higher than test accuracy: the model partly MEMORISES the training images instead of learning general patterns (overfitting). With only ~200 training images this is common.
+
+PCA reconstruction: error against number of components kept
+   k   variance kept   train MSE   test MSE
+   1        17.50%     0.03308    0.03538
+   2        27.22%     0.02918    0.03175
+   5        39.34%     0.02432    0.02738
+  10        50.51%     0.01984    0.02379
+  20        63.54%     0.01462    0.01931
+  30        71.90%     0.01127    0.01682
+  50        81.97%     0.00723    0.01426
+  75        89.38%     0.00426    0.01225
+ 100        93.91%     0.00244    0.01085
+ 109        95.12%     0.00196    0.01052
+MSE = average squared difference between original and reconstructed pixels (pixels are 0..1).
+Test error is higher than train error because PCA was fitted ONLY on the train images - this is expected.
+Reconstruction pictures: train images are rebuilt well (PCA was fitted on them); test images come back as a
+generic brain and the specific tumor detail is lost - PCA only keeps patterns common to the training set.
+
+Integrity check passed: predict.py's preprocessing reproduces the loader's test vectors exactly.

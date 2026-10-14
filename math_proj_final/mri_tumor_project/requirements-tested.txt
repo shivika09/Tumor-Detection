@@ -1,0 +1,7 @@
+# EXACT versions this project was tested with (Linux, Python 3.12.3).
+# If something behaves strangely on your computer, install these:  pip install -r requirements-tested.txt
+numpy==2.4.4
+scikit-learn==1.8.0
+Pillow==12.1.1
+matplotlib==3.10.8
+joblib==1.5.3

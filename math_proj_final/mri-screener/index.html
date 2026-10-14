@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MRI Tumor Screener</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>MRI Tumor Screener</h1>
+</header>
+<div class="note"><b>Classroom demo, not a diagnosis.</b> The model only separates two classes, so it will answer "tumor" or "no tumor" for any image, including ones that are not brain MRIs. Use real axial brain slices (JPG, PNG, WebP).</div>
+
+<main>
+  <aside class="rail">
+    <div class="drop" id="drop">
+      <strong>Drop MRI scans here</strong>
+      <small>or choose files. Several at once is fine.</small>
+      <div class="btns">
+        <input type="file" id="file" accept="image/*" multiple class="sr">
+        <label for="file" class="btn primary" id="pick" tabindex="0" role="button">Choose scans</label>
+        <button id="samples" type="button">Load samples</button>
+        <button id="clear" type="button">Clear</button>
+      </div>
+    </div>
+    <section class="facts" aria-label="About the model">
+      <h2>Model</h2>
+      <div class="flow"><span>gray</span><i>→</i><span>autocontrast</span><i>→</i><span>64×64</span><i>→</i><span>PCA 4096→<b id="kk"></b></span><i>→</i><span>RBF SVM</span></div>
+      <h2>Held-out test (<span id="nte"></span> scans)</h2>
+      <div class="stats"><div><b id="sAcc"></b><span>accuracy</span></div><div><b id="sRec"></b><span>tumors found</span></div><div><b id="sPre"></b><span>precision</span></div></div>
+      <div class="cm" aria-label="Confusion matrix">
+        <div class="h"></div><div class="h">said no tumor</div><div class="h">said tumor</div>
+        <div class="h">no tumor</div><div class="ok" id="tn"></div><div class="bad" id="fp"></div>
+        <div class="h">tumor</div><div class="bad" id="fn"></div><div class="ok" id="tp"></div>
+      </div>
+      <p>Training accuracy is 100% against about 84% on unseen scans, so the model memorises its training set to a degree. A missed tumor is the costlier mistake.</p>
+    </section>
+  </aside>
+
+  <section class="results" aria-live="polite">
+    <div class="sum" id="sum" hidden>
+      <h2>Results</h2>
+      <div class="nums"><div><b id="nAll">0</b><span>scans</span></div><div class="t"><b id="nT">0</b><span>tumor detected</span></div><div class="c"><b id="nC">0</b><span>no tumor</span></div></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>No scans yet. Drop files on the left or press Load samples.</div>
+  </section>
+</main>
+
+<p class="limits"><b>How to read the score.</b> The score is the SVM's signed distance from its decision boundary. Above 0 means tumor, below 0 means no tumor. It is not a probability. Scores within ±0.3 of zero are marked low confidence. The sample scans were held out from training; one wrong call per class is included on purpose.</p>
+</div>
+<script src="js/model-data.js"></script>
+<script src="js/samples-data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Packages needed to run the whole project (any recent version should work;
+# see requirements-tested.txt for the exact versions this was verified with).
+numpy
+scikit-learn
+Pillow
+matplotlib
+joblib
